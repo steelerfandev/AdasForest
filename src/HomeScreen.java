@@ -8,15 +8,15 @@ import java.awt.image.*;
 import java.util.*;
 import javax.imageio.*;
 
-public class MyCustomPanel extends JPanel implements MouseMotionListener {
+public class HomeScreen extends JPanel implements MouseMotionListener {
 
 	private int mouseX;
 	private int mouseY;
 	private String userName;
 	private BufferedImage image;
-	public boolean buttonClicked;
+	private boolean buttonClicked;
 	
-	public MyCustomPanel() {
+	public HomeScreen() {
 		JLabel title = new JLabel("Ada's Forest");
 		JButton start = new JButton("Start Your Adventure");
 		
@@ -27,14 +27,18 @@ public class MyCustomPanel extends JPanel implements MouseMotionListener {
 						// are overriding it
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "IT WORKS");
-				start.setVisible(false);
-				title.setText("");
+				
+				Main.removeHomeScreenFromPanel();
 			}
 			
 		});
 		super.add(start); // this adds the button to the panel
 		super.addMouseMotionListener(this); // adds the mouse motion listener to
 											// the panel
+	}
+	
+	public boolean getButtonClicked(){
+		return buttonClicked;
 	}
 	
 	private void changeBackground() {

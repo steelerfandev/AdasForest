@@ -2,6 +2,10 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 public class Main {
+	
+	private static HomeScreen homescreen;
+	private static JFrame frame;
+	
 	public static void main(String[] args){
 		
 		try{
@@ -11,22 +15,19 @@ public class Main {
 			
 		}
 		
-		JFrame frame = new JFrame("Ada's Forest"); //TITLE
+		frame = new JFrame("Ada's Forest"); //TITLE
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //this closes the panel when I click the x
 		frame.setSize(800, 600); //sets the size of window
-		frame.setVisible(true); //sets window visible
 		
-		MyCustomPanel panel = new MyCustomPanel();
+		homescreen = new HomeScreen();
 		
-		frame.add(panel);
+		frame.add(homescreen);
 		frame.setVisible(true);
 		
-		if(panel.buttonClicked == true){
-			frame.remove(panel);
-			frame.setVisible(false);
-		}
-		//jkhfkhfjhgjl
-		
+	}
+	
+	public static void removeHomeScreenFromPanel(){
+		homescreen.setVisible(false);
 	}
 }
