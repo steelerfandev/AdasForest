@@ -27,7 +27,6 @@ public class HomeScreen extends JPanel implements MouseMotionListener {
 						// are overriding it
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "IT WORKS");
-				
 				Main.removeHomeScreenFromPanel();
 			}
 			
