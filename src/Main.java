@@ -26,7 +26,7 @@ public class Main {
 			frame.remove(panel);
 			frame.setVisible(false);
 		}
-		
+		//jkhfkhfjhgjl
 		
 	}
 }
