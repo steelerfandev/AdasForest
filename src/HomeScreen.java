@@ -28,6 +28,7 @@ public class HomeScreen extends JPanel implements MouseMotionListener {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "IT WORKS");
 				Main.removeHomeScreenFromPanel();
+				Main.addExpScene();
 			}
 			
 		});

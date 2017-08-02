@@ -1,10 +1,14 @@
+import java.awt.Component;
+
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 public class Main {
 	
 	private static HomeScreen homescreen;
-	private static JFrame frame;
+	private static ExpositionCutScene expscene;
+	public static JFrame frame;
+	public static int numImage;
 	
 	public static void main(String[] args){
 		
@@ -24,10 +28,16 @@ public class Main {
 		
 		frame.add(homescreen);
 		frame.setVisible(true);
-		
 	}
 	
 	public static void removeHomeScreenFromPanel(){
 		homescreen.setVisible(false);
+	}
+	
+	public static void addExpScene(){
+		expscene = new ExpositionCutScene();
+		
+		frame.add(expscene);
+		frame.setVisible(true);
 	}
 }
