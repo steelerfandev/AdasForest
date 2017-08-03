@@ -83,8 +83,8 @@ public class ExpositionCutScene extends JPanel implements MouseMotionListener {
 		try { //you have to do this in case it cant find the image
 			
 			//put the images into the image array
-			image0 = ImageIO.read(new File("image0.jpg"));
-			image1 = ImageIO.read(new File("image1.jpg"));
+			image0 = ImageIO.read(new File("adaforest1.jpg"));
+			image1 = ImageIO.read(new File("adaforest2.jpg"));
 			image2 = ImageIO.read(new File("image2.jpg"));
 			
 			//instantiate the image array so it is not null
