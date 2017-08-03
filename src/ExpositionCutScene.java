@@ -64,16 +64,20 @@ public class ExpositionCutScene extends JPanel implements MouseMotionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) { //on click
 				numImage++; //up the image count
-				repaint(); //repaint
 				
 				//if numimage >= 2, then we're going to hide this button
-				if(numImage >= 2){
-					forwardButton.setVisible(false);
+				if(numImage > 2){
+					Main.removeExpSceneFromPanel();
+					Main.addFirstForest();
+					System.out.println("New objective: Play in the forest");
+					return;
 				}
 				//if numimage > 0, then we're going to show the back button
 				if(numImage >= 0){
 					backButton.setVisible(true);
 				}
+
+				repaint(); //repaint
 			}
 		});
 		super.add(forwardButton); // this adds the button to the panel

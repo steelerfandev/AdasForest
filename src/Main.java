@@ -9,6 +9,9 @@ public class Main {
 	private static ExpositionCutScene expscene;
 	public static JFrame frame;
 	public static int numImage;
+	private static FirstForest firstForest;
+	private static FirstTown firstTown;
+	private static FirstLibrary firstLibrary;
 	
 	public static void main(String[] args){
 		
@@ -34,10 +37,47 @@ public class Main {
 		homescreen.setVisible(false);
 	}
 	
+	public static void removeExpSceneFromPanel(){
+		expscene.setVisible(false);
+	}
+	
+	public static void removeFirstForestFromPanel(){
+		firstForest.setVisible(false);
+	}
+	
+	public static void removeFirstTownFromPanel(){
+		firstForest.setVisible(false);
+	}
+	
+	
+	
 	public static void addExpScene(){
 		expscene = new ExpositionCutScene();
 		
 		frame.add(expscene);
 		frame.setVisible(true);
 	}
+	
+	public static void addFirstForest(){
+		firstForest = new FirstForest();
+		
+		frame.add(firstForest);
+		frame.setVisible(true);
+	}
+	
+	public static void addFirstTown(){
+		firstTown = new FirstTown();
+		
+		frame.add(firstTown);
+		frame.setVisible(true);
+	}
+	
+	public static void addFirstLibrary(){
+		firstLibrary = new FirstLibrary();
+		
+		frame.add(firstLibrary); //this error gets fixed when you instantiate the constructor for firstlibrary
+		frame.setVisible(true);
+	}
+	
+	
 }
