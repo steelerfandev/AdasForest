@@ -64,6 +64,19 @@ public class FirstForest extends JPanel {
 				}
 			}
 		});
+		
+		//the following is pseudocode for allowing the user to click on the door instead of a button
+		//i had to go so i didnt have enough time to figure out how to implement
+		//see if you can ask the king about it :P
+		/*
+		 * if(mouse clicked){
+		 * if(mouseX>doorminX && mouseX<doormaxX && mouseY>doorminY && mouseY<doormaxY){
+		 * forestBack.setVisible(true);
+		 * etc etc
+		 * repaint();
+		 * }
+		 * }
+		 */
 
 		forestBack.setPreferredSize(new Dimension(90, 40));
 
