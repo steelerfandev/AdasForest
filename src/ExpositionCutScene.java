@@ -68,7 +68,7 @@ public class ExpositionCutScene extends JPanel implements MouseMotionListener {
 				//if numimage >= 2, then we're going to hide this button
 				if(numImage > 2){
 					Main.removeExpSceneFromPanel();
-					Main.addAdasRoom();
+					Main.addAdasRoom(); //change to Main.addFirstForest if you want it to go back to mvp
 					System.out.println("New objective: Play in the forest");
 					return;
 				}
