@@ -13,6 +13,8 @@ public class Main {
 	private static FirstTown firstTown;
 	private static FirstLibrary firstLibrary;
 	
+	private static AdasRoom adasRoom;
+	
 	public static void main(String[] args){
 		
 		try{
@@ -55,6 +57,13 @@ public class Main {
 		expscene = new ExpositionCutScene();
 		
 		frame.add(expscene);
+		frame.setVisible(true);
+	}
+	
+	public static void addAdasRoom(){
+		adasRoom= new AdasRoom();
+		
+		frame.add(adasRoom);
 		frame.setVisible(true);
 	}
 	

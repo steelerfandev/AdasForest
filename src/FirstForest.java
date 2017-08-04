@@ -39,6 +39,7 @@ public class FirstForest extends JPanel implements MouseListener {
 	public FirstForest() {
 		super();
 
+		//all the buttons
 		JButton leaveRoom = new JButton("Leave");
 		JButton forestBack = new JButton("Back");
 		JButton forestNext = new JButton("Next");
@@ -249,11 +250,7 @@ public class FirstForest extends JPanel implements MouseListener {
 
 	public void mouseClicked(MouseEvent e) {
 
-		if (mouseX > 245 && mouseX < 245 + 191 && mouseY > 0 && mouseY < 216) {
-			// something goes here i think
-
-			repaint();
-		}
+		
 
 	}
 
