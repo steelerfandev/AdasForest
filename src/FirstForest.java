@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,7 +12,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class FirstForest extends JPanel {
+public class FirstForest extends JPanel implements MouseListener {
+
+	private int mouseX, mouseY;
+
 	// here are all the images and the imagearray and the imagecount
 	private BufferedImage image0;
 	private BufferedImage image1;
@@ -33,6 +37,7 @@ public class FirstForest extends JPanel {
 
 	// constructor
 	public FirstForest() {
+		super();
 
 		JButton leaveRoom = new JButton("Leave");
 		JButton forestBack = new JButton("Back");
@@ -64,19 +69,6 @@ public class FirstForest extends JPanel {
 				}
 			}
 		});
-		
-		//the following is pseudocode for allowing the user to click on the door instead of a button
-		//i had to go so i didnt have enough time to figure out how to implement
-		//see if you can ask the king about it :P
-		/*
-		 * if(mouse clicked){
-		 * if(mouseX>doorminX && mouseX<doormaxX && mouseY>doorminY && mouseY<doormaxY){
-		 * forestBack.setVisible(true);
-		 * etc etc
-		 * repaint();
-		 * }
-		 * }
-		 */
 
 		forestBack.setPreferredSize(new Dimension(90, 40));
 
@@ -89,7 +81,7 @@ public class FirstForest extends JPanel {
 				forestBack.setVisible(false);
 				forestNext.setVisible(false);
 				repaint();
-				
+
 				if (numImage == 2) {
 					addButton(sickTreeBack);
 				}
@@ -108,14 +100,14 @@ public class FirstForest extends JPanel {
 				forestBack.setVisible(false);
 				forestNext.setVisible(false);
 				repaint();
-				
+
 				if (numImage == 2) {
 					addButton(sickTreeBack);
 					addButton(sickTreeWhat);
 				}
 			}
 		});
-		
+
 		sickTreeBack.setPreferredSize(new Dimension(90, 40));
 
 		// do the onclick listener
@@ -129,7 +121,7 @@ public class FirstForest extends JPanel {
 				repaint();
 			}
 		});
-		
+
 		sickTreeWhat.setPreferredSize(new Dimension(150, 40));
 
 		// do the onclick listener
@@ -141,7 +133,7 @@ public class FirstForest extends JPanel {
 				sickTreeBack.setVisible(false);
 				sickTreeWhat.setVisible(false);
 				repaint();
-				
+
 				if (numImage == 3) {
 					addButton(thisTreeIsSickBack);
 					addButton(thisTreeIsSickAskMom);
@@ -149,7 +141,7 @@ public class FirstForest extends JPanel {
 				}
 			}
 		});
-		
+
 		thisTreeIsSickBack.setPreferredSize(new Dimension(90, 40));
 
 		// do the onclick listener
@@ -163,7 +155,7 @@ public class FirstForest extends JPanel {
 				repaint();
 			}
 		});
-		
+
 		thisTreeIsSickAskMom.setPreferredSize(new Dimension(150, 40));
 
 		// do the onclick listener
@@ -175,15 +167,15 @@ public class FirstForest extends JPanel {
 				thisTreeIsSickBack.setVisible(false);
 				thisTreeIsSickAskMom.setVisible(false);
 				repaint();
-				
+
 				if (numImage == 4) {
 					addButton(momBack);
 					addButton(momToTown);
 				}
 			}
-			
+
 		});
-		
+
 		momBack.setPreferredSize(new Dimension(90, 40));
 
 		// do the onclick listener
@@ -197,7 +189,7 @@ public class FirstForest extends JPanel {
 				repaint();
 			}
 		});
-		
+
 		momToTown.setPreferredSize(new Dimension(150, 40));
 
 		// do the onclick listener
@@ -209,7 +201,7 @@ public class FirstForest extends JPanel {
 				momBack.setVisible(false);
 				momToTown.setVisible(false);
 				repaint();
-				
+
 				if (numImage == 5) {
 					Main.removeFirstForestFromPanel();
 					Main.addFirstTown();
@@ -253,6 +245,40 @@ public class FirstForest extends JPanel {
 
 	private void addButton(JButton b) {
 		super.add(b);
+	}
+
+	public void mouseClicked(MouseEvent e) {
+
+		if (mouseX > 245 && mouseX < 245 + 191 && mouseY > 0 && mouseY < 216) {
+			// something goes here i think
+
+			repaint();
+		}
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
