@@ -29,6 +29,7 @@ public class FirstTown extends JPanel{
 				Main.removeFirstTownFromPanel();
 				Main.addFirstLibrary();
 				System.out.println("New objective: Find the librarian!");
+				townToLibrary.setVisible(false);
 				return;
 			}
 		});
@@ -36,7 +37,7 @@ public class FirstTown extends JPanel{
 		try { // you have to do this in case it cant find the image
 
 			// put the images into the image array
-			imageTown = ImageIO.read(new File("imageTown.jpg"));
+			imageTown = ImageIO.read(new File("image0.jpg"));
 		} catch (Exception e) { // catch dat exception
 			e.printStackTrace(); // idk what this does rly but just keep it
 									// there

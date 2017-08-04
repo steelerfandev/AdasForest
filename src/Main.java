@@ -1,5 +1,8 @@
 import java.awt.Component;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -12,10 +15,18 @@ public class Main {
 	private static FirstForest firstForest;
 	private static FirstTown firstTown;
 	private static FirstLibrary firstLibrary;
+	private static BufferedImage iconImage;
 	
-	private static AdasRoom adasRoom;
+	private static AdaRoom adaRoom;
 	
 	public static void main(String[] args){
+		try{
+			iconImage = ImageIO.read(new File("icon.gif"));
+		}
+		 catch (Exception e) { // catch dat exception
+				e.printStackTrace(); // idk what this does rly but just keep it
+										// there
+		}
 		
 		try{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -25,6 +36,7 @@ public class Main {
 		}
 		
 		frame = new JFrame("Ada's Forest"); //TITLE
+		frame.setIconImage(iconImage);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //this closes the panel when I click the x
 		frame.setSize(800, 600); //sets the size of window
@@ -47,8 +59,12 @@ public class Main {
 		firstForest.setVisible(false);
 	}
 	
+
 	public static void removeFirstTownFromPanel(){
 		firstForest.setVisible(false);
+	}
+	public static void removeAdaRoomFromPanel(){
+		adaRoom.setVisible(false);
 	}
 	
 	
@@ -61,9 +77,9 @@ public class Main {
 	}
 	
 	public static void addAdasRoom(){
-		adasRoom= new AdasRoom();
+		adaRoom = new AdaRoom();
 		
-		frame.add(adasRoom);
+		frame.add(adaRoom);
 		frame.setVisible(true);
 	}
 	
