@@ -24,9 +24,11 @@ public class Forest extends JPanel implements MouseListener {
 	private BufferedImage image4;
 	private int numImage = 0;
 	private BufferedImage[] imageArray;
+	private Graphics g;
+	private boolean theMouseWasClicked = false;
 
 	// image index 0: leave room
-	// Image index 1: View of forest - back and next buttons
+	// Image index 1: View of forest - back and next buttons - 
 	// Image index 2: See sick tree and click that
 	// text says "this tree appears to be sick"
 	// buttons - go ask mom, go back
@@ -50,167 +52,26 @@ public class Forest extends JPanel implements MouseListener {
 		JButton momBack = new JButton("Back");
 		JButton momToTown = new JButton("Go into town!");*/
 
-		leaveRoom.setPreferredSize(new Dimension(120, 40));
-		addButton(leaveRoom); // this adds the button to the panel
-
-		// do the onclick listener
-		leaveRoom.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage++;
-				leaveRoom.setVisible(false);
-				forestBack.setVisible(true);
-				forestNext.setVisible(true);
-				repaint();
-
-				if (numImage == 1) {
-					addButton(forestBack); // this adds the button to the panel
-					addButton(forestNext);
-				}
-			}
-		});
-
-		forestBack.setPreferredSize(new Dimension(90, 40));
-
-		// do the onclick listener
-		forestBack.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage--;
-				forestBack.setVisible(false);
-				forestNext.setVisible(false);
-				repaint();
-
-				if (numImage == 2) {
-					addButton(sickTreeBack);
-				}
-
-			}
-		});
-
-		forestNext.setPreferredSize(new Dimension(90, 40));
-
-		// do the onclick listener
-		forestNext.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage++;
-				forestBack.setVisible(false);
-				forestNext.setVisible(false);
-				repaint();
-
-				if (numImage == 2) {
-					addButton(sickTreeBack);
-					addButton(sickTreeWhat);
-				}
-			}
-		});
-
-		sickTreeBack.setPreferredSize(new Dimension(90, 40));
-
-		// do the onclick listener
-		sickTreeBack.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage--;
-				sickTreeBack.setVisible(false);
-				sickTreeWhat.setVisible(false);
-				repaint();
-			}
-		});
-
-		sickTreeWhat.setPreferredSize(new Dimension(150, 40));
-
-		// do the onclick listener
-		sickTreeWhat.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage++;
-				sickTreeBack.setVisible(false);
-				sickTreeWhat.setVisible(false);
-				repaint();
-
-				if (numImage == 3) {
-					addButton(thisTreeIsSickBack);
-					addButton(thisTreeIsSickAskMom);
-					System.out.println("New objective: Go home and ask Mom about the tree");
-				}
-			}
-		});
-
-		thisTreeIsSickBack.setPreferredSize(new Dimension(90, 40));
-
-		// do the onclick listener
-		thisTreeIsSickBack.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage--;
-				thisTreeIsSickBack.setVisible(false);
-				thisTreeIsSickAskMom.setVisible(false);
-				repaint();
-			}
-		});
-
-		thisTreeIsSickAskMom.setPreferredSize(new Dimension(150, 40));
-
-		// do the onclick listener
-		thisTreeIsSickAskMom.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage++;
-				thisTreeIsSickBack.setVisible(false);
-				thisTreeIsSickAskMom.setVisible(false);
-				repaint();
-
-				if (numImage == 4) {
-					addButton(momBack);
-					addButton(momToTown);
-				}
-			}
-
-		});
-
-		momBack.setPreferredSize(new Dimension(90, 40));
-
-		// do the onclick listener
-		momBack.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage--;
-				momBack.setVisible(false);
-				momToTown.setVisible(false);
-				repaint();
-			}
-		});
-
-		momToTown.setPreferredSize(new Dimension(150, 40));
-
-		// do the onclick listener
-		momToTown.addActionListener(new ActionListener() {
-			@Override // following method is in the original superclass and you
-						// are overriding it
-			public void actionPerformed(ActionEvent e) { // on click
-				numImage++;
-				momBack.setVisible(false);
-				momToTown.setVisible(false);
-				repaint();
-
-				if (numImage == 5) {
-					Main.removeFirstForestFromPanel();
-					Main.addFirstTown();
-					System.out.println("New objective: Go to the library!");
-					return;
-				}
-			}
-		});
+		super.addMouseListener(this);
+		numImage = 0;
+		g = imageArray[numImage].getGraphics();
+		g.drawImage(imageArray[numImage], 0, 0, null);
+		System.out.println("Click on the door to leave the room.");
+		if(theMouseWasClicked == true){
+			numImage += 1;
+			g = imageArray[numImage].getGraphics();
+			g.drawImage(imageArray[numImage], 0, 0, null);
+			System.out.println("Click on the door to leave the room.");
+		}
+		
+		
+		
+		
+		
+		
+	
+		
+		
 
 		try { // you have to do this in case it cant find the image
 
@@ -249,7 +110,21 @@ public class Forest extends JPanel implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-
+		
+		if(numImage == 0){ //if you're on leave room
+			mouseX = e.getX();
+			mouseY = e.getY();
+			if (mouseX > 245 && mouseX < 245 + 191 && mouseY > 216 && mouseY < 600) {
+				System.out.println("O SHIT WADDUP");
+				theMouseWasClicked = true;
+				Main.removeAdaRoomFromPanel();
+				Main.addFirstForest();
+				repaint();
+			}
+		}
+		if(numImage == 1){
+			
+		}
 		
 
 	}

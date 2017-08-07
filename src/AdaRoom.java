@@ -10,39 +10,104 @@ import javax.swing.JPanel;
 public class AdaRoom extends JPanel implements MouseListener {
 
 	private int mouseX, mouseY;
-	private BufferedImage image;
+	private BufferedImage adasroom;
+	private BufferedImage adashouseinterior;
+	private BufferedImage adashouseexterior;
+	private BufferedImage imageArray[];
+	private int numImage = 0;
+	
+	private String theMouseWasClicked = "";
 
 	public AdaRoom (){
 			super();
 			
+			imageArray = new BufferedImage[3];
+			
 			super.addMouseListener(this);
-			//ACTUALLY HOW TF DOES MOUSECLICKED WORK
+			repaint();
+			System.out.println("Click on the door to leave the room.");
+			if(theMouseWasClicked.equals("left room")){
+				numImage ++;
+				repaint();
+				System.out.println("Click on the door on the left to go outside.");
+				System.out.println("Click on the door on the right to go back to your room.");
+				if(theMouseWasClicked.equals("go outside")){
+					numImage ++;
+					repaint();
+				}
+				else if(theMouseWasClicked.equals("go to room")){
+				numImage--;
+				repaint();
+					System.out.println("Click on the door to leave the room.");
+					//hard coded recursiveness
+					if(theMouseWasClicked.equals("left room")){
+						numImage ++;
+						System.out.println("Click on the door on the left to go outside.");
+						System.out.println("Click on the door on the right to go back to your room.");
+						repaint();
+						if(theMouseWasClicked.equals("go outside")){
+							numImage ++;
+							repaint();
+						}
+						else if(theMouseWasClicked.equals("go to room")){
+						numImage--;
+						repaint();
+							System.out.println("Click on the door to leave the room.");
+						}
+					}
+				}
+			}
 			
 			//the image
 			try{
-				image=ImageIO.read(new File("adasroom.jpg"));
+				adasroom=ImageIO.read(new File("adasroom.jpg"));
+				adashouseinterior=ImageIO.read(new File("adashouseinterior.jpg"));
+				adashouseexterior=ImageIO.read(new File("adashouseexterior.jpg"));
+				
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+			
+			imageArray[0]= adasroom;
+			imageArray[1] = adashouseinterior;
+			imageArray[2] = adashouseexterior;
 		}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		g.drawImage(image, 0, 0, null);
+		g.drawImage(imageArray[numImage], 0, 0, null);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
-		if (mouseX > 245 && mouseX < 245 + 191 && mouseY > 216 && mouseY < 600) {
-			System.out.println("O SHIT WADDUP");
-			Main.removeAdaRoomFromPanel();
-			Main.addFirstForest();
-			repaint();
+		System.out.println(mouseX);
+		System.out.println(mouseY);
+		System.out.println(numImage);
+		if(numImage == 0){
+			if (mouseX > 245 && mouseX < 245 + 191 && mouseY > 216 && mouseY < 600) {
+				theMouseWasClicked = "left room";
+				repaint();
+			}
 		}
+		else if(numImage == 1){
+			
+			//CHANGE INTO GRAPHICS FOR HOUSE INTERIOR
+			//COORDINATES FOR LEFT DOOR
+			if (mouseX > 0 && mouseX < 132 && mouseY > 236 && mouseY < 600) {
+				theMouseWasClicked = "go outside";
+				repaint();
+			}
+			//COORDINATES FOR RIGHT DOOR
+			if (mouseX > 651 && mouseX < 800 && mouseY > 241 && mouseY < 600) {
+				theMouseWasClicked = "go to room";
+				repaint();
+			}
+		}
+		
 	}
 
 	@Override

@@ -50,23 +50,9 @@ public class Main {
 	public static void removeHomeScreenFromPanel(){
 		homescreen.setVisible(false);
 	}
-	
 	public static void removeExpSceneFromPanel(){
 		expscene.setVisible(false);
 	}
-	
-	public static void removeFirstForestFromPanel(){
-		firstForest.setVisible(false);
-	}
-	
-
-	public static void removeFirstTownFromPanel(){
-		firstForest.setVisible(false);
-	}
-	public static void removeAdaRoomFromPanel(){
-		adaRoom.setVisible(false);
-	}
-	
 	
 	
 	public static void addExpScene(){
