@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class FirstForest extends JPanel implements MouseListener {
+public class Forest extends JPanel implements MouseListener {
 
 	private int mouseX, mouseY;
 
@@ -36,11 +36,11 @@ public class FirstForest extends JPanel implements MouseListener {
 	// library and adjacent buildings but library is the only one initialized
 
 	// constructor
-	public FirstForest() {
+	public Forest() {
 		super();
 
 		//all the buttons
-		JButton leaveRoom = new JButton("Leave");
+		/*JButton leaveRoom = new JButton("Leave");
 		JButton forestBack = new JButton("Back");
 		JButton forestNext = new JButton("Next");
 		JButton sickTreeBack = new JButton("Back");
@@ -48,7 +48,7 @@ public class FirstForest extends JPanel implements MouseListener {
 		JButton thisTreeIsSickBack = new JButton("Back");
 		JButton thisTreeIsSickAskMom = new JButton("Ask Mom about it");
 		JButton momBack = new JButton("Back");
-		JButton momToTown = new JButton("Go into town!");
+		JButton momToTown = new JButton("Go into town!");*/
 
 		leaveRoom.setPreferredSize(new Dimension(120, 40));
 		addButton(leaveRoom); // this adds the button to the panel

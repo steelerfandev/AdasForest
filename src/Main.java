@@ -12,7 +12,7 @@ public class Main {
 	private static ExpositionCutScene expscene;
 	public static JFrame frame;
 	public static int numImage;
-	private static FirstForest firstForest;
+	private static Forest firstForest;
 	private static FirstTown firstTown;
 	private static FirstLibrary firstLibrary;
 	private static BufferedImage iconImage;
@@ -84,7 +84,7 @@ public class Main {
 	}
 	
 	public static void addFirstForest(){
-		firstForest = new FirstForest();
+		firstForest = new Forest();
 		
 		frame.add(firstForest);
 		frame.setVisible(true);
