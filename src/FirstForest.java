@@ -216,8 +216,8 @@ public class FirstForest extends JPanel implements MouseListener {
 
 			// put the images into the image array
 			image0 = ImageIO.read(new File("adasroom.jpg"));
-			image1 = ImageIO.read(new File("image0.jpg"));
-			image2 = ImageIO.read(new File("image1.jpg"));
+			image1 = ImageIO.read(new File("adasforest.jpg"));
+			image2 = ImageIO.read(new File("adastree.jpg"));
 			image3 = ImageIO.read(new File("image2.jpg"));
 			image4 = ImageIO.read(new File("image2.jpg"));
 
