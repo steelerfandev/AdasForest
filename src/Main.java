@@ -10,6 +10,7 @@ public class Main {
 	
 	private static HomeScreen homescreen;
 	private static ExpositionCutScene expscene;
+	private static AdaRoom adaroom;
 	public static JFrame frame;
 	public static int numImage;
 	private static Forest firstForest;
@@ -50,8 +51,16 @@ public class Main {
 	public static void removeHomeScreenFromPanel(){
 		homescreen.setVisible(false);
 	}
+	
+	public static void removeAdaRoomFromPanel(){
+		adaroom.setVisible(false);
+	}
 	public static void removeExpSceneFromPanel(){
 		expscene.setVisible(false);
+	}
+	
+	public static void removeFirstTownFromPanel(){
+		firstTown.setVisible(false);
 	}
 	
 	
